@@ -1,0 +1,430 @@
+import java.util.*; 
+import java.nio.charset.StandardCharsets; 
+import java.nio.file.*; 
+import java.io.*; 
+public class SimpleEncrypt{
+
+
+///////////////////////////////////////////////////*****************************
+public static Stack<Queue<Character>> readSentences(String fileName){
+	ArrayQueue<Character> pok = new ArrayQueue<Character>(1000000) ;
+	  char c ;
+	 Stack<Queue<Character>> po2 = new LinkedStack<Queue<Character>>();
+	try {
+		 Scanner p = new Scanner(new File(fileName));
+	 while(p.hasNextLine()){
+	        String  q=p.nextLine();
+	        for(int i=0;i<q.length();i++) {
+	        c = q.charAt(i); 
+	        if(!(pok.full()) ) {
+	        pok.enqueue(c);
+	        po2.push(pok);
+	        pok.serve();}
+	        }
+	        }
+	 p.close();
+	 }
+	   catch(Exception e){System.out.println(e);}
+	return   po2;
+	
+}
+	
+	
+	
+	
+	
+	
+	//**************************************************
+	/*try{
+ Scanner p = new Scanner(new File(fileName));
+        while(p.hasNext()){
+        int q=p.nextInt();
+        }
+        p.close();}
+                 catch(IOException e){System.out.println(e);}
+         catch(Exception e){System.out.println(e);}
+return  list;
+
+/* File file =new File(fileName); 
+    Scanner sc = new Scanner(file); 
+  
+    while (sc.hasNextLine()) 
+      System.out.println(sc.nextLine()); 
+  } */
+
+
+
+
+public static void encrypt(Queue<Character> q, int k){
+	if (k <= 0) 
+        return; 
+
+    LinkedStack <Character> stack = new LinkedStack <Character>(); 
+    Queue<Character> q2=new ArrayQueue<Character>(10000);
+    int i=0;
+while(q.length()!=0) { 
+	if(i<k) {
+stack.push(q.serve());
+i++;}
+	else {
+		while(!(stack.empty())) {
+	q2.enqueue(stack.pop());
+	}
+		i=0;
+		}
+	}
+		
+	for(int g=0;g<q2.length();g++)
+		q.enqueue(q2.serve());
+}
+	/*int size = q.length();
+	if(k>size) {
+		System.out.println("invalid k");
+		return ;
+	}
+	Character [] ch = new Character [size];
+	for(int i=0; i< ch.length;i++)
+	    {ch[i] = new Character((char) 0);}
+
+
+	while(q.length()!=0) {
+	for(int i=0; i<k;i++) 
+	ch[i]=new Character(q.serve());  
+	
+	for(int i=0; i<size/k;i++) 
+	{
+		Character c=ch[i];
+		ch[i]=ch[size-1-i];
+		ch[size-i-1]=c;
+		
+		}
+	for(int g=0;g<ch.length;g++)
+		q.enqueue(ch[g])*/;
+	
+		
+
+	//if (q.length()>0 || k > q.length() ) 
+     //   return; 
+   /* if (k <= 0) 
+        return; 
+
+    LinkedStack <Character> stack = new LinkedStack <Character>(); 
+    Queue<Character> q2=new ArrayQueue<Character>(10000);
+    int i=0;
+while(q.length()!=0) { 
+	if(i<k) {
+stack.push(q.serve());
+i++;}
+	else {
+		while(!(stack.empty())) {
+	q2.enqueue(stack.pop());
+	}
+		i=0;
+		}
+	}
+		
+	for(int g=0;g<q2.length();g++)
+		q.enqueue(q2.serve());*/
+	
+	
+	
+    // Push the first K elements into a Stack  
+   /* for (int i = 0; i < k; i++) { 
+        stack.push(q.serve()); 
+    } 
+    // Enqueue the contents of stack at the back  
+    // of the queue 
+    while (!stack.empty()) { 
+        q.enqueue(stack.pop());
+    }
+    // Remove the remaining elements and enqueue  
+    // them at the end of the Queue 
+    for (int i = 0; i < q.length() - k; i++) { 
+        q.enqueue(q.serve()); }}*/
+
+/*int size=0;
+size=q.length();
+Stack <Character> st=new LinkedStack<Character>();
+Queue<Character> q2=new ArrayQueue<Character>(100000);
+if(k>size) {
+	System.out.println("invalid k");
+	return ;
+}
+Character [] ch = new Character [size];
+for(int i=0; i< ch.length;i++)
+    {ch[i] = new Character((char) 0);}
+
+
+while(q.length()!=0) {
+for(int i=0; i<k;i++) {
+ch[i]=new Character(q.serve()); 
+st.push(ch[i]);}
+while(!st.empty())
+	q2.enqueue(st.pop());}
+
+/*for(int s=0;s<;s++) {
+	if(!(st.full())&& ch[i]!=null)
+ st.push(ch[i]);
+	
+}}}*/
+
+/*for(int j=0;j<size;j++) {
+	q2.enqueue(st.pop());
+}*/
+
+/* for(int i=0;i<q2.length();i++)
+	q.enqueue(q2.serve());*/
+
+	/*Character c=ch[i];
+	ch[i]=ch[k-i-1];
+	ch[k-i-1]=c;*/
+	
+	
+	
+	
+	/*
+	int sizeo=q.length();
+	int i=0;
+	Stack <Character> STR;
+	 Character [] c = null ;
+	//for(i=0;i<size/k;i++) {
+		while(!(q.length()==0)) {
+		for(int p=0;p<k;p++) {
+     c[k] = q.serve();
+	}
+		for(int ko=c.length;ko>0;i++) {
+			q.enqueue(c[ko]);
+		}
+		for(int y=0;y<c.length;y++)
+		c[y] =null;}*/
+	/* if (q.length()>0 || k > q.length() ) 
+         return; 
+     if (k <= 0) 
+         return; 
+
+     LinkedStack <Character> stack = new LinkedStack <Character>(); 
+     stack=null;
+     // Push the first K elements into a Stack  
+     for (int i = 0; i < k; i++) { 
+         stack.push(q.serve()); 
+     } 
+     // Enqueue the contents of stack at the back  
+     // of the queue 
+     while (!stack.empty()) { 
+         q.enqueue(stack.pop());
+     }
+     // Remove the remaining elements and enqueue  
+     // them at the end of the Queue 
+     for (int i = 0; i < q.length() - k; i++) { 
+         q.enqueue(q.serve()); 
+     } */
+
+	
+	
+
+public static void decrypt(Queue<Character> q, int k){
+	/*int size=0;
+	size=q.length();
+	//Stack <Character> st=null;
+	 
+	if(k>size) {
+		System.out.println("invalid k");
+		return ;
+	}
+	Character [] ch = new Character [size];
+
+	for(int i=0; i<q.length();i++)
+	{ch[i]=new Character(q.serve()); }
+
+	for(int i=0;i<k/2;i++) {
+		Character c=ch[i];
+		ch[i]=ch[k-i-1];
+		ch[k-i-1]=c;
+	}
+	for(int i=0;i<size;i++) {
+		q.enqueue(ch[i]);
+	}*/
+	/* if (k <= 0) 
+	        return; 
+
+	    LinkedStack <Character> stack = new LinkedStack <Character>(); 
+	    Queue<Character> q2=new ArrayQueue<Character>(10000);
+	    int i=0;
+	while(q.length()!=0) { 
+		if(i<k) {
+	stack.push(q.serve());
+	i++;}
+		else {
+			while(!stack.empty()) {
+		q2.enqueue(stack.pop());
+		} i=0;
+			}
+		}
+			
+		for(int g=0;g<q2.length();g++)
+			q.enqueue(q2.serve());*/
+	/*int size = q.length();
+	if(k>size) {
+		System.out.println("invalid k");
+		return ;
+	}
+	Character [] ch = new Character [size];
+	for(int i=0; i< ch.length;i++)
+	    {ch[i] = new Character((char) 0);}
+
+
+	while(q.length()!=0) {
+	for(int i=0; i<k;i++) 
+	ch[i]=new Character(q.serve());  
+	
+	for(int i=0; i<size/k;i++) 
+	{
+		Character c=ch[i];
+		ch[i]=ch[size-1-i];
+		ch[size-i-1]=c;
+		
+		}
+	for(int g=0;g<ch.length;g++)
+		q.enqueue(ch[g]);
+	}*/
+	if (k <= 0) 
+        return; 
+
+    LinkedStack <Character> stack = new LinkedStack <Character>(); 
+    Queue<Character> q2=new ArrayQueue<Character>(10000);
+    int i=0;
+while(q.length()!=0) { 
+	if(i<k) {
+stack.push(q.serve());
+i++;}
+	else {
+		while(!(stack.empty())) {
+	q2.enqueue(stack.pop());
+	}
+		i=0;
+		}
+	}
+		
+	for(int g=0;g<q2.length();g++)
+		q.enqueue(q2.serve());
+		}
+	
+
+	
+	
+	
+	
+	
+
+
+//*decrypt ************************ exption :::: 
+public static  void encrypt(Stack<Queue<Character>> st, int k){
+	  Queue<Character> sto=new ArrayQueue<Character>(10000); 
+	     Queue<Character> c=new ArrayQueue<Character>(10000);
+	     if(st.empty())return;
+	     
+	     while(!(st.empty())) {
+	    	 c=st.pop();
+	    	 sto.enqueue(c.serve());	 
+	     }
+	     encrypt(sto,k);
+	     int s=sto.length();
+	     for(int i=0; i<s;i++) {
+	    	st.push(sto);}
+	}
+   /* if (st.empty()) 
+         return; 
+     if (k <= 0) 
+         return;
+     Queue<Character> sto=new ArrayQueue<Character>(100000); 
+     Queue<Character> c;
+     while(!(st.empty())) {
+    	 c=st.pop();
+    	 sto.enqueue(c.serve());	 
+     }
+     
+     encrypt(sto,k);
+     int s=sto.length();
+     for(int i=0; i<s;i++) {
+    	st.push(sto);}*/
+
+    
+
+
+
+     
+     /*/
+     q = null;
+     // Push the first K elements into a queue  
+     for (int i = 0; i < k; i++) { 
+    	Queue<Character> ch=st.pop();
+         q.enqueue(ch.serve()); 
+     } 
+     // Enqueue the contents of stack at the back  
+     // of the queue 
+     while (q.length()!=0) { 
+    	 ch = null;
+         ch2 = ch;
+		ch2.enqueue(q.serve());
+         st.push(ch2);
+     }
+     // Remove the remaining elements and enqueue  
+     // them at the end of the Queue 
+     for (int i = 0; i < q.length() - k; i++) { 
+         //q.enqueue(q.serve()); 
+         st.push(st.pop());
+
+     } 
+	//encrypt() ÇÍæáåÇ áßíæ ÈÚÏíä ÇÓæíåÇ
+}*/
+//*decrypt exption 
+
+
+
+public static void decrypt(Stack<Queue<Character>> st, int k){
+     Queue<Character> sto=new ArrayQueue<Character>(10000); 
+     Queue<Character> c=new ArrayQueue<Character>(10000);
+     if(st.empty())return;
+     
+     while(!(st.empty())) {
+    	 c=st.pop();
+    	 sto.enqueue(c.serve());	 
+     }
+     encrypt(sto,k);
+     int s=sto.length();
+     for(int i=0; i<s;i++) {
+    	st.push(sto);}
+}}
+
+
+
+	/* if (st.empty()) 
+         return; 
+     if (k <= 0) 
+         return; 
+     q = null;
+     // Push the first K elements into a queue  
+     for (int i = 0; i < k; i++) { 
+    	Queue<Character> ch=st.pop();
+    	if(!(ch.length()==0) && !q.full())
+         q.enqueue(ch.serve()); 
+     } 
+     // Enqueue the contents of stack at the back  
+     // of the queue 
+     while (q.length()!=0) { 
+    	 ch = null;
+         ch2 = ch;
+		ch2.enqueue(q.serve());
+         st.push(ch2);
+     }
+     // Remove the remaining elements and enqueue  
+     // them at the end of the Queue 
+     for (int i = 0; i < q.length() - k; i++) { 
+         //q.enqueue(q.serve()); 
+         st.push(st.pop());
+
+     } 
+}*/
+
+
+
